@@ -1,0 +1,31 @@
+﻿@model IEnumerable<oiat.saferinternetbot.web.Models.AnswerListItemViewModel>
+@if (Model.Any()) { 
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TextTruncated)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TextTruncated)
+                </td>
+                <td class="text-right">
+                    @Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Löschen", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">Es wurden noch keine Antworten erstellt.</div>
+}

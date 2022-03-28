@@ -1,0 +1,38 @@
+﻿@model IEnumerable<oiat.saferinternetbot.web.Models.UserViewModel>
+@{
+    ViewBag.Title = "Benutzer";
+}
+@Html.Partial("_Headline")
+<div class="row mb-3">
+    <div class="col-12">
+        @Html.ActionLink("Neuen Benutzer anlegen", "Create", null, new { @class = "btn btn-success btn-sm" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td class="text-right">
+                            @Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

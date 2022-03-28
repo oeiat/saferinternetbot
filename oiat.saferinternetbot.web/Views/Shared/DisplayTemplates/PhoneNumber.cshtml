@@ -1,0 +1,23 @@
+﻿@model string
+@if (!string.IsNullOrEmpty(Model) && Model.Length > 4)
+{
+    var sb = new System.Text.StringBuilder();
+    sb.Append('+');
+    for (int i = 0; i < Model.Length; i++)
+    {
+        if (i < 2 || i >= Model.Length - 3)
+        {
+            sb.Append(Model[i]);
+        }
+        else
+        {
+            sb.Append('*');
+        }
+    }
+
+     @sb.ToString()
+}
+else
+{
+    @Html.Display("Missing/Invalid Phone Number")
+}

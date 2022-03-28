@@ -1,0 +1,22 @@
+﻿@model oiat.saferinternetbot.web.Models.DefaultAnswerEditViewModel
+@{
+    ViewBag.Title = "Antwort bearbeiten";
+}
+
+@Html.Partial("_Headline")
+<div class="row">
+    <div class="col-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Type)
+            @Html.HiddenFor(model => model.TimeControlledMessageId)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Text)
+                @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            @Html.ActionLink("Zurück", "Index", "DefaultAnswer", new { type = Model.Type, messageId = Model.TimeControlledMessageId }, new { @class = "btn btn-secondary" })
+            <button type="submit" class="btn btn-primary">Speichern</button>
+        }
+    </div>
+</div>

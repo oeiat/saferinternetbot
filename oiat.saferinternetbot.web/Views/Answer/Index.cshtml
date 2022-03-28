@@ -1,0 +1,20 @@
+﻿@model oiat.saferinternetbot.web.Models.AnswerListViewModel
+@{
+    ViewBag.Title = "Antworten für " + Model.IntentName;
+}
+<div class="row">
+    <div class="col-12">
+        @Html.ActionLink("Zurück zu den Kategorien", "Index", "Intent")
+    </div>
+</div>
+@Html.Partial("_Headline")
+<div class="row mb-3">
+    <div class="col-12">
+        @Html.ActionLink("Neue Antwort erstellen", "Create", new { id = Model.IntentId }, new { @class = "btn btn-success btn-sm" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        @Html.Partial("_List", Model.Items)
+    </div>
+</div>

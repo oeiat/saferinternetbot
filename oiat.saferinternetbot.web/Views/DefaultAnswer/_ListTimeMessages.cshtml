@@ -1,0 +1,41 @@
+﻿@using oiat.saferinternetbot.DataAccess.Enums
+
+@model IEnumerable<oiat.saferinternetbot.web.Models.TimeControlledMessageListViewModel>
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enabled)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Enabled)
+                    </td>
+                    <td class="text-right">
+                        @Html.ActionLink("Antworten", "Index", "DefaultAnswer", new { type = (int)DefaultAnswerType.TimeRestrictedMessage, messageId = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Bearbeiten", "Edit", "TimeControlledMessage", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Löschen", "Delete", "TimeControlledMessage", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">Es wurden noch keine Zeitgesteuerten Nachrichten erstellt.</div>
+}

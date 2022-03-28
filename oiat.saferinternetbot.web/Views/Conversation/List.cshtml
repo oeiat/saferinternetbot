@@ -1,0 +1,88 @@
+﻿@using System.Text
+@model IEnumerable<oiat.saferinternetbot.Web.Models.ConversationOverviewViewModel>
+@{
+    ViewBag.Title = "Konversationen";
+}
+@Html.Partial("_Headline")
+<div class="row">
+    <div class="col-12">
+        <table id="conversations" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ConversationId)</th>
+                    <th>@Html.DisplayNameFor(model => model.MessageCount)</th>
+                    <th>@Html.DisplayNameFor(model => model.LatestTimestamp)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.ConversationId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MessageCount)</td>
+                        <td data-sort="@item.LatestTimestamp.ToString("yyyyMMddHHmmssfff")">@Html.DisplayFor(modelItem => item.LatestTimestamp)</td>
+                        <td class="text-right">
+                            @Html.ActionLink("Nachrichten", "Messages", "Conversation", new { id = HttpServerUtility.UrlTokenEncode(Encoding.UTF8.GetBytes(item.ConversationId)) }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Download", "Export", "Conversation", new { id = HttpServerUtility.UrlTokenEncode(Encoding.UTF8.GetBytes(item.ConversationId)) }, new { @class = "btn btn-warning btn-sm" })
+                            <a href="#" class="btn btn-danger btn-sm" data-href="@Url.Action("Delete", "Conversation", new { id = HttpServerUtility.UrlTokenEncode(Encoding.UTF8.GetBytes(item.ConversationId)) })" data-toggle="modal" data-target="#confirm-delete">Löschen</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Konversation Löschen
+            </div>
+            <div class="modal-body">
+                Sind sie sicher das sie die Konversation und alle Nachrichten löschen wollen ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+                <a class="btn btn-danger btn-ok">Löschen</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css" />
+}
+
+@section Scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#conversations').DataTable(
+                {
+                    "order": [[2, "desc"]],
+                    "language": {
+                        "lengthMenu": "_MENU_ Einträge pro Seite",
+                        "zeroRecords": "Keine Einträge gefunden",
+                        "info": "Seite _PAGE_ von _PAGES_",
+                        "infoEmpty": "Keine Einträge gefunden",
+                        "infoFiltered": "(gefiltert von _MAX_ Einträgen)",
+                        "search": "Suche:",
+                        "paginate": {
+                            "first": "Erste",
+                            "last": "Letzte",
+                            "next": ">",
+                            "previous": "<"
+                        },
+                    },
+                    "stateSave": true
+                });
+
+            $('#confirm-delete').on('show.bs.modal', function (e) {
+                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            });
+        });
+    </script>
+}

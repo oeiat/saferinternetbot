@@ -1,0 +1,27 @@
+﻿@using oiat.saferinternetbot.DataAccess.Enums
+
+@model oiat.saferinternetbot.web.Models.DefaultAnswerListViewModel
+@{
+    var isTimeMessage = Model.Type == DefaultAnswerType.TimeRestrictedMessage && (Model.Items == null);
+    var typeString = (isTimeMessage) ? "Nachricht" : "Antwort";
+    ViewBag.Title = $"{typeString}en für " + Model.Name;
+}
+
+@Html.Partial("_Headline")
+<div class="row mb-3">
+    <div class="col-12">
+        @Html.ActionLink($"Neue {typeString} erstellen", "Create", (isTimeMessage) ? "TimeControlledMessage" : "DefaultAnswer", new { type = (int)Model.Type, messageId = Model.TimeControlledMessageId }, new { @class = "btn btn-success btn-sm" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        @if (isTimeMessage)
+        {
+            @Html.Partial("_ListTimeMessages", Model.TimeControlledMessages)
+        }
+        else
+        {
+            @Html.Partial("_List", Model)
+        }
+    </div>
+</div>

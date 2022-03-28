@@ -1,0 +1,67 @@
+﻿@using oiat.saferinternetbot.Web.Models
+@model ConversationDetailViewModel
+@{
+    ViewBag.Title = "Nachrichten";
+}
+@Html.Partial("_Headline")
+<div class="row">
+    <div class="col-12">
+        <div class="pb-4">
+            <h4>Empfänger: @Html.DisplayFor(model => model.ConversationId)</h4>
+            <h4>Anzahl der Nachrichten: @Html.DisplayFor(model => model.MessageCount) </h4>
+        </div>
+        <div class="pb-4">
+            <table id="messages" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayName(nameof(ConversationMessageViewModel.Timestamp))</th>
+                        <th>@Html.DisplayName(nameof(ConversationMessageViewModel.Type))</th>
+                        <th>@Html.DisplayName(nameof(ConversationMessageViewModel.Content))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Messages)
+                    {
+                        <tr>
+                            <td data-sort="@item.Timestamp.ToString("yyyyMMddHHmmssfff")">@Html.DisplayFor(modelItem => item.Timestamp)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Content)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css" />
+}
+
+@section Scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#messages').DataTable(
+                {
+                    "order": [[0, "desc"]],
+                    "language": {
+                        "lengthMenu": "_MENU_ Einträge pro Seite",
+                        "zeroRecords": "Keine Einträge gefunden",
+                        "info": "Seite _PAGE_ von _PAGES_",
+                        "infoEmpty": "Keine Einträge gefunden",
+                        "infoFiltered": "(gefiltert von _MAX_ Einträgen)",
+                        "search": "Suche:",
+                        "paginate": {
+                            "first": "Erste",
+                            "last": "Letzte",
+                            "next": ">",
+                            "previous": "<"
+                        },
+                    },
+                    "stateSave": true
+                });
+        });
+    </script>
+}

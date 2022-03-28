@@ -1,0 +1,20 @@
+﻿@using oiat.saferinternetbot.web.Helpers
+@{
+    var notifications = TempData["Notifications"];
+}
+
+@if (notifications != null)
+{
+    <script type="text/javascript">
+        toastr.options.closeButton = true;
+        toastr.options.progressBar = true;
+
+        @foreach(var item in (List<Notification>) notifications)
+            {
+                <text>
+        toastr.@(item.Type.ToString().ToLowerInvariant())('@item.Text', '@item.Title');
+                </text>
+            }
+
+    </script>
+}

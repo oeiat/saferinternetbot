@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oiat.saferinternetbot.DataAccess", "oiat.saferinternetbot.DataAccess\oiat.saferinternetbot.DataAccess.csproj", "{70DD58E0-26EC-45ED-B07B-D50E9BB7E5A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oiat.saferinternetbot.Business", "oiat.saferinternetbot.Business\oiat.saferinternetbot.Business.csproj", "{82DDF2D1-2C0D-4A86-9211-2E511279AD64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oiat.saferinternetbot.LuisApi", "oiat.saferinternetbot.LuisApi\oiat.saferinternetbot.LuisApi.csproj", "{3543D689-610D-486D-A1A7-C77065421232}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oiat.saferinternetbot.Core", "oiat.saferinternetbot.Core\oiat.saferinternetbot.Core.csproj", "{079345F5-F41F-42A6-BCE1-CA6CCA490B94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oiat.whatsapp.functions", "oiat.whatsapp.functions\oiat.whatsapp.functions.csproj", "{9E976508-6E41-40D9-82B0-0ECC543D97D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C0E03EF2-FFEA-4011-8C4C-ACACFF989F20}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70DD58E0-26EC-45ED-B07B-D50E9BB7E5A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70DD58E0-26EC-45ED-B07B-D50E9BB7E5A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70DD58E0-26EC-45ED-B07B-D50E9BB7E5A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70DD58E0-26EC-45ED-B07B-D50E9BB7E5A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82DDF2D1-2C0D-4A86-9211-2E511279AD64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82DDF2D1-2C0D-4A86-9211-2E511279AD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82DDF2D1-2C0D-4A86-9211-2E511279AD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82DDF2D1-2C0D-4A86-9211-2E511279AD64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3543D689-610D-486D-A1A7-C77065421232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3543D689-610D-486D-A1A7-C77065421232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3543D689-610D-486D-A1A7-C77065421232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3543D689-610D-486D-A1A7-C77065421232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{079345F5-F41F-42A6-BCE1-CA6CCA490B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{079345F5-F41F-42A6-BCE1-CA6CCA490B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{079345F5-F41F-42A6-BCE1-CA6CCA490B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{079345F5-F41F-42A6-BCE1-CA6CCA490B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E976508-6E41-40D9-82B0-0ECC543D97D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E976508-6E41-40D9-82B0-0ECC543D97D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E976508-6E41-40D9-82B0-0ECC543D97D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E976508-6E41-40D9-82B0-0ECC543D97D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DC94606-CC4E-4D18-9398-E405119206A3}
+	EndGlobalSection
+EndGlobal
